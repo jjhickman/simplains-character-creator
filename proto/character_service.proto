@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "character_messages.proto";
+
+package simplains_cc;
+
+/*
+    Service RPCs
+*/
+service CharacterService {
+    rpc SetCharacter(simplains_cc.SetCharacterRequest) returns (simplains_cc.SetCharacterResponse) {}
+    rpc GetCharacter(simplains_cc.GetCharacterRequest) returns (simplains_cc.GetCharacterResponse) {}
+    rpc GetAllCharacters(simplains_cc.GetAllCharactersRequest) returns (simplains_cc.GetAllCharactersResponse) {}
+    rpc GetRandomCharacter(simplains_cc.GetRandomCharacterRequest) returns (simplains_cc.GetRandomCharacterResponse) {}
+}

@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package simplains_cc;
+
+/*
+    Character Enums    
+*/
+enum Class {
+    FIGHTER = 0;
+    ROGUE = 1;
+    WIZARD = 2;
+    CLERIC = 3;
+    BARBARIAN = 4;
+}
+
+enum Species {
+    HUMAN = 0;
+    DWARF = 1;
+    ELF = 2;
+    HALFLING = 3;
+    GOBLIN = 4;
+}
+
+/*
+    Character Structs
+*/
+message Character {
+    string name = 1;
+    string id = 2;
+    string user_id = 3;
+    Class class = 4;
+    Species species = 5;
+    int32 level = 6;
+    int32 age = 7;
+}
+
+/*
+    API function/rpc messages
+*/
+
+message GetAllCharactersRequest {
+    string user_name = 1;
+}
+
+message GetAllCharactersResponse {
+    repeated Character characters = 1;
+}
+
+message GetCharacterRequest {
+    string character_id = 1;
+    string user_name = 2;
+}
+
+message GetCharacterResponse {
+    Character character = 1;
+}
+
+message SetCharacterRequest {
+    Character character = 1;
+    string user_name = 2;
+}
+
+message SetCharacterResponse {
+    string character_id = 1;
+}
+
+message GetRandomCharacterRequest {
+    string user_id = 1;
+}
+
+message GetRandomCharacterResponse {
+    Character character = 1;
+}

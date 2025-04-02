@@ -5,13 +5,14 @@ FROM node:18 as build_stage
 WORKDIR /character-creator
 
 # Copy package.json and package-lock.json to the working directory
-COPY ./character-creator/package*.json ./
+COPY ./client/character-creator/package*.json ./
 
 # Install dependencies
 RUN npm install
 
 # Copy the entire application code to the container
-COPY ./character-creator .
+COPY ./proto .
+COPY ./client/character-creator .
 
 # Build the React app for production
 RUN npm run build
